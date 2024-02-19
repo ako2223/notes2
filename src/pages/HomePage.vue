@@ -7,8 +7,9 @@
           {{ task.text }}
         </li>
       </ul>
+      <button @click="addTask">Add Task</button>
     </div>
-    <TaskDetail :task="selectedTask" @editTask="editTask" v-if="selectedTask" />
+    <TaskDetail :task="selectedTask" @editTask="editTask" @removeTask="removeTask" v-if="selectedTask" />
   </div>
 </template>
 
@@ -41,10 +42,25 @@ export default {
     selectTask(index) {
       this.selectedTaskIndex = index;
     },
+    addTask() {
+  const newTaskText = prompt("Enter the new task name:");
+  if (newTaskText !== null) {
+    const newTaskDescription = prompt("Enter the description for the task:");
+    this.tasks.push({ text: newTaskText, description: newTaskDescription || '' });
+  }
+},
     editTask(newText, newDescription) {
       if (this.selectedTaskIndex !== null) {
         this.tasks[this.selectedTaskIndex].text = newText;
         this.tasks[this.selectedTaskIndex].description = newDescription;
+      }
+    },
+    removeTask() {
+      if (this.selectedTaskIndex !== null) {
+        if (confirm('Are you sure you want to remove this task?')) {
+          this.tasks.splice(this.selectedTaskIndex, 1);
+          this.selectedTaskIndex = null;
+        }
       }
     }
   }
