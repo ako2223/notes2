@@ -3,6 +3,7 @@
       <h1>{{ task.text }}</h1>
       <p>{{ task.description }}</p>
       <button @click="editMode = true">Edit</button>
+      <button @click="removeTask">Remove Task</button>
       <div v-if="editMode">
         <input v-model="editedText" placeholder="New task name">
         <textarea v-model="editedDescription" placeholder="New task description"></textarea>
@@ -38,6 +39,11 @@
       saveChanges() {
         this.$emit('editTask', this.editedText, this.editedDescription);
         this.editMode = false;
+      },
+      removeTask() {
+        if (confirm('Are you sure you want to remove this task?')) {
+          this.$emit('removeTask');
+        }
       }
     }
   };
@@ -53,4 +59,3 @@
     margin-bottom: 10px;
   }
   </style>
-  
