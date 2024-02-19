@@ -1,9 +1,20 @@
-<script setup>
-import FirstComponent from '../components/FirstComponent.vue'
+<template>
+  <div id="app">
+    <TaskList/>
+  </div>
+</template>
+
+<script>
+import TaskList from '../components/FirstComponent.vue'
+
+export default {
+  name: 'App',
+  components: {
+    TaskList
+  }
+}
 </script>
 
-
-<template>
-    <FirstComponent />
-
-  </template>
+<style>
+/* Add your CSS styling here */
+</style>

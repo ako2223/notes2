@@ -1,19 +1,34 @@
-<script setup>
-alert('Hello from FirstComponent.vue')
-
-</script>
-
 <template>
-    <div class="card">
-        <div>
-        <img src="../assets/images/panda.jpg" alt="panda_image">
-    </div>
-    
-    <div>
-        <h3>Panda</h3>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, sint?</p>
-    </div>
-    </div>
+  <div>
+    <h1>Task List</h1>
+    <input v-model="newTask" @keyup.enter="addTask" placeholder="Add a new task">
+    <ul>
+      <li v-for="(task, index) in tasks" :key="index">
+        {{ task.text }}
+        <button @click="removeTask(index)">Remove</button>
+      </li>
+    </ul>
+  </div>
 </template>
 
-<style src="../assets/css/components/firstComponent.css"></style>
+<script>
+export default {
+  data() {
+    return {
+      newTask: '',
+      tasks: []
+    };
+  },
+  methods: {
+    addTask() {
+      if (this.newTask.trim()) {
+        this.tasks.push({ text: this.newTask });
+        this.newTask = '';
+      }
+    },
+    removeTask(index) {
+      this.tasks.splice(index, 1);
+    }
+  }
+};
+</script>
