@@ -13,6 +13,7 @@
         </div>
         <button type="submit">Add Task</button>
       </form>
+      <button  @click="goToHomePage()">Cancel</button>
     </div>
   </template>
   
