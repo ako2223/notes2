@@ -5,8 +5,8 @@
       <button @click="editMode = true">Edit</button>
       <button @click="removeTask">Remove Task</button>
       <div v-if="editMode">
-        <input v-model="editedText" placeholder="New task name">
-        <textarea v-model="editedDescription" placeholder="New task description"></textarea>
+        <input v-model="editedText" placeholder="New task name" id="new-taskName">
+        <textarea v-model="editedDescription" placeholder="New task description" id="new-taskDescription"></textarea>
         <button @click="saveChanges">Save</button>
       </div>
     </div>
@@ -52,10 +52,18 @@
   <style scoped>
   .task-detail {
     margin-left: 30%; /* Adjust this to create some space between menu and detail */
+    border: solid;
+    font-family: Roboto;
+  font-size: 25px;
   }
   
   input, textarea {
     display: block;
     margin-bottom: 10px;
+  }
+
+  #new-taskDescription{
+    width: 300px;
+  height: 150px;
   }
   </style>

@@ -5,11 +5,11 @@
       <form @submit.prevent="submitTask">
         <div>
           <label for="taskName">Task Name:</label>
-          <input id="taskName" v-model="taskName" required>
+          <input id="taskName"  v-model="taskName" required>
         </div>
         <div>
           <label for="taskDescription">Description:</label>
-          <textarea id="taskDescription" v-model="taskDescription"></textarea>
+          <textarea id="taskDescription"  v-model="taskDescription"></textarea>
         </div>
         <button type="submit">Add Task</button>
       </form>
