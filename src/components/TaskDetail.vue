@@ -1,69 +1,69 @@
-<template>
-    <div class="task-detail" v-if="task">
-      <h1>{{ task.text }}</h1>
-      <p>{{ task.description }}</p>
-      <button @click="editMode = true">Edit</button>
-      <button @click="removeTask">Remove Task</button>
-      <div v-if="editMode">
-        <input v-model="editedText" placeholder="New task name" id="new-taskName">
-        <textarea v-model="editedDescription" placeholder="New task description" id="new-taskDescription"></textarea>
-        <button @click="saveChanges">Save</button>
+  <template>
+      <div class="task-detail" v-if="task">
+        <h1>{{ task.text }}</h1>
+        <p>{{ task.description }}</p>
+        <button @click="editMode = true">Edit</button>
+        <button @click="removeTask">Remove Task</button>
+        <div v-if="editMode">
+          <input v-model="editedText" placeholder="New task name" id="new-taskName">
+          <textarea v-model="editedDescription" placeholder="New task description" id="new-taskDescription"></textarea>
+          <button @click="saveChanges">Save</button>
+        </div>
       </div>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      task: Object
-    },
-    data() {
-      return {
-        editMode: false,
-        editedText: '',
-        editedDescription: ''
-      };
-    },
-    watch: {
-      task: {
-        immediate: true,
-        handler(newVal) {
-          if (newVal) {
-            this.editedText = newVal.text;
-            this.editedDescription = newVal.description;
+    </template>
+    
+    <script>
+    export default {
+      props: {
+        task: Object
+      },
+      data() {
+        return {
+          editMode: false,
+          editedText: '',
+          editedDescription: ''
+        };
+      },
+      watch: {
+        task: {
+          immediate: true,
+          handler(newVal) {
+            if (newVal) {
+              this.editedText = newVal.text;
+              this.editedDescription = newVal.description;
+            }
           }
         }
-      }
-    },
-    methods: {
-      saveChanges() {
-        this.$emit('editTask', this.editedText, this.editedDescription);
-        this.editMode = false;
       },
-      removeTask() {
-        if (confirm('Are you sure you want to remove this task?')) {
-          this.$emit('removeTask');
+      methods: {
+        saveChanges() {
+          this.$emit('editTask', this.editedText, this.editedDescription);
+          this.editMode = false;
+        },
+        removeTask() {
+          // if (confirm('Are you sure you want to remove this task?')) {
+            this.$emit('removeTask');
+          // }
         }
       }
+    };
+    </script>
+    
+    <style scoped>
+    .task-detail {
+      margin-left: 30%; /* Adjust this to create some space between menu and detail */
+      border: solid;
+      font-family: Roboto;
+    font-size: 25px;
     }
-  };
-  </script>
-  
-  <style scoped>
-  .task-detail {
-    margin-left: 30%; /* Adjust this to create some space between menu and detail */
-    border: solid;
-    font-family: Roboto;
-  font-size: 25px;
-  }
-  
-  input, textarea {
-    display: block;
-    margin-bottom: 10px;
-  }
+    
+    input, textarea {
+      display: block;
+      margin-bottom: 10px;
+    }
 
-  #new-taskDescription{
-    width: 300px;
-  height: 150px;
-  }
-  </style>
+    #new-taskDescription{
+      width: 300px;
+    height: 150px;
+    }
+    </style>

@@ -96,23 +96,72 @@ export default {
 <style>
 
 .task-menu {
-  font-family: Roboto;
-  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
   width: 25%;
   float: left;
-  border: solid blue;
+  background: linear-gradient(145deg, #ffa726, #fb8c00);
+  color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
 }
 
 .selected {
-  background-color: lightgray;
+  background-color: #ffd95b;
+  color: #555;
 }
 
-.add_btn{
-  border-radius: 100px;
-  font-size: 30px;
-  margin-top:15px;
+.add_btn {
+  background-color: #66bb6a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.add_btn:hover {
+  transform: scale(1.1);
+}
+
+.task-detail {
+  margin-left: 26%;
+  background: #eeeeee;
+  border: 1px solid #bdbdbd;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input, textarea {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+#new-taskDescription {
+  height: 150px;
+}
+
+button {
+  background-color: #42a5f5;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1e88e5;
 }
 
 

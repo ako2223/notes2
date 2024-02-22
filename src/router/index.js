@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../pages/HomePage.vue';
 import TaskDetail from '../components/TaskDetail.vue';
 import AddTask from '../components/AddTask.vue';
+import Product from '../pages/Product.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,7 @@ const router = createRouter({
       component: () => import('../pages/AboutPage.vue'),
     },
     { path: '/add', component: AddTask },
+    { path: '/product/:id', name: 'product', component: Product },
   ],
 });
 
