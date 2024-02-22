@@ -15,7 +15,30 @@
     <button @click="goToHomePage()" class="postit-cancel-btn">Cancel</button>
   </div>
 </template>
+<script>
+  import { EventBus } from '../router/eventBus';
 
+  export default {
+    data() {
+      return {
+        taskName: '',
+        taskDescription: ''
+      };
+    },
+    methods: {
+      submitTask() {
+        console.log("Emitting addTask with", { text: this.taskName, description: this.taskDescription });
+        EventBus.emit('addTask', { text: this.taskName, description: this.taskDescription });
+        this.taskName = '';
+        this.taskDescription = '';
+        this.$router.push('/');
+      },
+      goToHomePage() {
+    this.$router.push({ path: '/' });
+  }
+    }
+  }
+  </script>
 <style scoped>
 .postit-add-task {
 background-color: #ffeb3b; /* Classic Post-it note yellow */
